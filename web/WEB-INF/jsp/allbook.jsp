@@ -27,6 +27,12 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-4 column">
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddBook">新增</a>
+        </div>
+    </div>
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <table class="table table-hover table-striped">
@@ -36,16 +42,22 @@
                     <th>书籍名字</th>
                     <th>书籍数量</th>
                     <th>书籍详情</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <c:forEach var="book" items="${list}">
                     <tr>
-                        <td>${book.getBookID()}</td>
-                        <td>${book.getBookName()}</td>
-                        <td>${book.getBookCounts()}</td>
-                        <td>${book.getDetail()}</td>
+                        <td>${book.bookId}</td>
+                        <td>${book.bookName}</td>
+                        <td>${book.bookCounts}</td>
+                        <td>${book.detail}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/book/toUpdateBook?id=${book.bookId}">修改</a>
+                            &nbsp; | &nbsp;
+                            <a href="${pageContext.request.contextPath}/book/deleteBook?id=${book.bookId}">删除</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
